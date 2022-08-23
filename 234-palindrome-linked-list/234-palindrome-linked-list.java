@@ -27,7 +27,7 @@ class Solution {
             return false;
         while(rev!=null && head!=null)
         {
-            System.out.println(rev.val+"  "+head.val);
+            //System.out.println(rev.val+"  "+head.val);
             if(rev.val!=head.val)return false;
             rev=rev.next;
             head=head.next;
