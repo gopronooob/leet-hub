@@ -26,33 +26,33 @@ class Solution {
         //create a weave LinkedList
         while(walker!=null)
         {
-            Node walkerCopy=new Node(walker.val);
-            Node next=walker.next;
-            walker.next=walkerCopy;
-            walkerCopy.next=next; 
-            walker=next;            
+            Node temp=new Node(walker.val);
+            temp.next=walker.next;
+            walker.next=temp;
+            walker=temp.next;
         }
-        
+
         //copy random pointers to the weaved linkedlist 
         walker=head;
-        while(walker!=null)
+        while(walker!=null && walker.next!=null )
         {
             Node random=walker.random ==null?null:walker.random.next;
-            walker.next.random=random;
-            walker = walker.next.next;
+            walker.next.random=random; 
+            walker=walker.next.next;
         }
         
-        walker = head;
-        Node newHead = head.next;
         //unweave copy list 
-        while(walker != null) {
-            Node walkerNew = walker.next;
-            walker.next=walkerNew.next;
-            walkerNew.next=walker.next==null?null:walker.next.next;
+
+        Node ans=head.next;
+        walker=head;
+        Node walker2=head.next;
+        while(walker!=null)
+        {            
+            walker.next=walker.next.next;
+            walker2.next=walker2.next==null?null:walker2.next.next;
             walker=walker.next;
-                     
+            walker2=walker2.next;
         }
-        return newHead;
-        
+        return ans;
     }
 }
