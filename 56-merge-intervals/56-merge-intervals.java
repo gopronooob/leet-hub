@@ -14,16 +14,16 @@ class Solution {
         for(int i=0;i<arr.length;i++)
         {
             //System.out.println(arr[i].st+"  "+arr[i].et);
-            
+ 
             if(i==0)
             {
                 stack.push(arr[i]);
             }
             else
-            { 
+            {
                 Pair temp=stack.peek();
-                if(arr[i].st>temp.et)
-                {                     
+                if(temp.et<arr[i].st)
+                {
                     stack.push(arr[i]);
                 }
                 else
