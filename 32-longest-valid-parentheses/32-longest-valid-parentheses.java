@@ -12,7 +12,7 @@ class Solution {
             }
             else
             {
-                stack.pop(); 
+                stack.pop();
                 if(stack.isEmpty())
                 {
                     stack.push(i);
@@ -21,7 +21,7 @@ class Solution {
                 {
                     ans=Math.max(ans,i-stack.peek());
                 }
-                
+        
             }
                 
         }
