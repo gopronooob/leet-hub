@@ -1,39 +1,39 @@
 class Solution {
     public int[][] merge(int[][] intervals) {
         
-        Pair arr[]=new Pair[intervals.length];
+        if(intervals.length<=1)
+            return intervals;
         
+     Pair[] pairArr = new Pair[intervals.length];
         for(int i=0;i<intervals.length;i++)
         {
-            arr[i]=new Pair(intervals[i][0],intervals[i][1]);
+            pairArr[i]=new Pair(intervals[i][0],intervals[i][1]);
         }
         
-        Arrays.sort(arr);
-        Stack<Pair> stack=new Stack<>();
-        
-        for(int i=0;i<arr.length;i++)
+        Arrays.sort(pairArr);
+        Stack<Pair> stack = new Stack<>();
+        for(int i=0;i<intervals.length;i++)
         {
-            //System.out.println(arr[i].st+"  "+arr[i].et);
- 
             if(i==0)
             {
-                stack.push(arr[i]);
+                stack.push(pairArr[i]);
             }
-            else
+            else            
             {
-                Pair temp=stack.peek();
-                if(temp.et<arr[i].st)
+                Pair temp= stack.peek();
+                if(temp.et<pairArr[i].st)
                 {
-                    stack.push(arr[i]);
+                    stack.push(pairArr[i]);
                 }
                 else
                 {
-                    temp.et=Math.max(temp.et,arr[i].et);
+                    temp.et=Math.max(pairArr[i].et,temp.et);
                 }
+
             }
-        }
+        }              
         
-        Stack<Pair> temp=new Stack<>();
+            Stack<Pair> temp=new Stack<>();
         
         while(!stack.isEmpty())
         {
@@ -57,7 +57,6 @@ class Solution {
         
         return ans;
     }
-    
 }
 
 class Pair implements Comparable<Pair> {
