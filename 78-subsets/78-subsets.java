@@ -1,27 +1,23 @@
 class Solution {
-    
-      List<List<Integer>> output = new ArrayList();
-      
+        List<List<Integer>> ans = new ArrayList<>();
     public List<List<Integer>> subsets(int[] nums) {
+        List<Integer> ansSoFar = new ArrayList<>();
+        addSubset(nums,ansSoFar,0);
+        return ans;
         
-         solve(0,nums,new ArrayList<Integer>());
-        return output;
     }
-    
-    public void solve(int p, int[] nums, List<Integer> pre){
-     
-        if(p==nums.length)
+    public void addSubset(int[] nums,List<Integer> ansSoFar,int index)
+    {
+        if(index==nums.length)
         {
-            output.add(pre);
+            ans.add(ansSoFar);
             return;
         }
-        
-        List pre1=new ArrayList(pre);
-        pre1.add(nums[p]);
-        List pre2=new ArrayList(pre);       
-        
-        solve(p+1,nums,pre2);
-        solve(p+1,nums,pre1);
-        
+        List<Integer> pre1=new ArrayList(ansSoFar);
+        pre1.add(nums[index]);
+        List<Integer> pre2=new ArrayList(ansSoFar);
+        addSubset(nums,pre2,index+1);
+        addSubset(nums,pre1,index+1);
     }
+    
 }
