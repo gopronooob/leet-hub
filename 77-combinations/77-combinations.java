@@ -15,7 +15,7 @@ class Solution {
             return;
         }
         
-        for(int i=start;i<=n;i++)
+        for(int i=start;i<=n-K+1;i++)
         {
             ansSoFar.add(i);
             generateCombination(n,K-1,ansSoFar,i+1);
