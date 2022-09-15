@@ -1,36 +1,38 @@
 class Solution {
-    List<String> ans=new ArrayList<>();
+        List<String> ans=new ArrayList<>(); 
     public List<String> letterCasePermutation(String s) {
-        if(s == null || s.length() == 0)
+        
+        if(s==null || s.length() ==0)
         {
             return ans;
         }
+        
         String stringSoFar="";
-        helper(s,stringSoFar);
+        backTrack(s,stringSoFar);
         return ans;
     }
     
-    public void helper(String st,String ssf)
+    public void backTrack(String s , String stringSoFar)
     {
-        if(st.length()==0)
+        if(s.length()==0)
         {
-            ans.add(ssf);
-            return; 
+            ans.add(stringSoFar);
+            return;
         }
         
-        if(Character.isDigit(st.charAt(0)))
+        if(Character.isDigit(s.charAt(0)))
         {
-            ssf=ssf+st.charAt(0);
-            st=st.substring(1);
-            helper(st,ssf);
+            stringSoFar=stringSoFar+s.charAt(0);
+            s=s.substring(1);
+            backTrack(s,stringSoFar);
         }
         else
         {
-            String ssf1=ssf+Character.toUpperCase(st.charAt(0));
-            String ssf2=ssf+Character.toLowerCase(st.charAt(0));
-            st=st.substring(1);
-            helper(st,ssf1);
-            helper(st,ssf2);
+            String s1=stringSoFar+Character.toUpperCase(s.charAt(0));
+            String s2=stringSoFar+Character.toLowerCase(s.charAt(0));
+            s=s.substring(1);
+            backTrack(s,s1);
+            backTrack(s,s2);
         }
     }
 }
