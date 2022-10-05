@@ -20,10 +20,29 @@ public void flatten(TreeNode root) {
         if(root == null) return;
     
 
-   flatten(root.right);
-    flatten(root.left);
-    root.right = prev;
-    root.left = null;
-	prev = root;
+    flattenTreeDFS(root);  
 	}
+    
+    public TreeNode flattenTreeDFS(TreeNode root)
+    {
+        if(root==null) return null;
+        
+        TreeNode leftTail=flattenTreeDFS(root.left);
+        TreeNode rightTail=flattenTreeDFS(root.right);
+        
+        if(leftTail!=null)
+        {
+            TreeNode temp=root.right;
+            root.right=root.left;
+            leftTail.right=temp;
+            root.left=null;
+        }
+        
+        if(rightTail !=null) return rightTail;
+        if(leftTail !=null) return leftTail;
+        
+        return root;
+        
+        
+    }
 }
