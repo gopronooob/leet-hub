@@ -14,25 +14,35 @@
  * }
  */
 class Solution {
+    HashMap<String,Integer> counter = new HashMap<>();
     List<TreeNode> ans = new ArrayList<>();
-    Map<String, Integer> counter = new HashMap<>();
     
     public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
-        postOrderTraverse(root);
-        return ans;
+        if(root==null)
+            return ans;
+        inOrder(root);
+            
+            
+    return ans;
     }
     
-    String postOrderTraverse(TreeNode root) {
-        if (root == null) {
-            return "x";
+    String inOrder(TreeNode root)
+    {
+        if(root==null)
+        {
+          return "X";
         }
-        String left = postOrderTraverse(root.left);
-        String right = postOrderTraverse(root.right);
-        String key = left + "," + right + "," + root.val;
-        counter.put(key, counter.getOrDefault(key, 0) + 1);
-        if (counter.get(key) == 2) {
+        
+        String left= inOrder(root.left);
+        String right= inOrder(root.right);
+        
+        String cur=left+","+right+","+root.val;
+        counter.put(cur, counter.getOrDefault(cur, 0) + 1);
+        //System.out.println(cur);
+        if (counter.get(cur) == 2) {
             ans.add(root);
         }
-        return key;
+        return cur;
+            
     }
 }
