@@ -29,15 +29,9 @@ class Solution {
         {
             if(root.left!=null && root.right!=null)
             {
-                //int max=findMax(root.left);
-                TreeNode max=root.left;
-                while(max.right!=null)
-                {
-                    max=max.right;
-                }
-                
-                root.val=max.val;
-                root.left=deleteNode(root.left,max.val);
+                int max=findMax(root.left); 
+                root.val=max;
+                root.left=deleteNode(root.left,max);
                 
             }
             else if(root.left != null)
