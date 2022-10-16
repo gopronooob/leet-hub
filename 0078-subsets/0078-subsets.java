@@ -1,23 +1,23 @@
 class Solution {
-        List<List<Integer>> ans = new ArrayList<>();
     public List<List<Integer>> subsets(int[] nums) {
-        List<Integer> ansSoFar = new ArrayList<>();
-        addSubset(nums,ansSoFar,0);
-        return ans;
+        List<List<Integer>> ans = new ArrayList<>();
         
+        List<Integer> ansSoFar = new ArrayList<>();
+        getSubSet(nums,ans,ansSoFar,0);
+        return ans;
     }
-    public void addSubset(int[] nums,List<Integer> ansSoFar,int index)
+    
+    void getSubSet(int[] nums,List<List<Integer>> ans,List<Integer> ansSoFar,int index)
     {
         if(index==nums.length)
         {
-            ans.add(ansSoFar);
+            ans.add(new ArrayList(ansSoFar));
             return;
         }
-        List<Integer> pre1=new ArrayList(ansSoFar);
-        pre1.add(nums[index]);
-        List<Integer> pre2=new ArrayList(ansSoFar);
-        addSubset(nums,pre2,index+1);
-        addSubset(nums,pre1,index+1);
+        
+        getSubSet(nums,ans,new ArrayList(ansSoFar),index+1);
+        ansSoFar.add(nums[index]);
+        getSubSet(nums,ans,new ArrayList(ansSoFar),index+1);
+        
     }
-    
 }
