@@ -49,18 +49,18 @@ class Solution {
             while(!q.isEmpty())
             {
                 Integer vertices=q.remove();
-                if(!visited[vertices])
+               if(!visited[vertices])
                 {
                 //System.out.println("vertices of "+vertices+" "+visited[vertices]);
                     ans.add(vertices);
                     visited[vertices]=true;
+
                 }
                 for(Integer connectedNode:adj.get(vertices))
                     {
                         if(!visited[connectedNode])
                             q.add(connectedNode);
                     }
-                   
             }  
         return ans;
     }
