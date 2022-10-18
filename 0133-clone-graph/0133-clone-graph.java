@@ -39,10 +39,7 @@ class Solution {
         
         for(Node n: node.neighbors)
         {
-            //clonned.neighbors.add(clonner(n,visited));
-            if(!visited.containsKey(n))
-                clonner(n,visited);
-            clonned.neighbors.add(visited.get(n));
+            clonned.neighbors.add(clonner(n,visited));
         }
         
         return clonned;
