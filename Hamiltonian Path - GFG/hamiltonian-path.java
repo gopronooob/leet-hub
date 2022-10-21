@@ -53,22 +53,17 @@ class Solution
 
         }
 
-        for(int i=0;i<M;i++)
-
-        {
-
-            int x=Edges.get(i).get(0)-1;
-
-            int y=Edges.get(i).get(1)-1;
-
-            adj.get(x).add(y);
-
+        for(int i=0;i<M;i++) 
+        {  
+            int x=Edges.get(i).get(0)-1; 
+            int y=Edges.get(i).get(1)-1; 
+            adj.get(x).add(y); 
             adj.get(y).add(x);
 
         }
 
 
-        for(int i=1;i<=N;i++){
+        for(int i=0;i<N;i++){
              if(checkHamiltonaianPath(adj,visitedSet,i,1,N)) return true;
             visited = new boolean[N+1];
              }
@@ -79,7 +74,7 @@ class Solution
     boolean checkHamiltonaianPath(ArrayList<ArrayList<Integer>> Edges,HashSet<Integer> visitedSet,int index,int count,int size)
     {
         if(count == size ) return true;
-        //System.out.println(size+" "+index+" " + count+" "+visitedSet);
+       // System.out.println(size+" "+index+" " + count+" "+visitedSet);
         visitedSet.add(index);
         for(int neighbor: Edges.get(index))
         {
