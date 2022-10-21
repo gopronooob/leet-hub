@@ -45,6 +45,8 @@ class Solution
 
         ArrayList<ArrayList<Integer>>adj=new ArrayList<ArrayList<Integer>>();
 
+      //  System.out.println(Edges);
+        
         for(int i=0;i<=N;i++)
 
         {
@@ -55,15 +57,15 @@ class Solution
 
         for(int i=0;i<M;i++) 
         {  
-            int x=Edges.get(i).get(0)-1; 
-            int y=Edges.get(i).get(1)-1; 
+            int x=Edges.get(i).get(0); 
+            int y=Edges.get(i).get(1); 
             adj.get(x).add(y); 
             adj.get(y).add(x);
 
         }
 
 
-        for(int i=0;i<N;i++){
+        for(int i=1;i<=N;i++){
              if(checkHamiltonaianPath(adj,visitedSet,i,1,N)) return true;
             visited = new boolean[N+1];
              }
