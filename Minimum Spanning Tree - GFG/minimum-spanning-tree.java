@@ -74,9 +74,10 @@ class Solution
             
             if(srcParent!=destParent)
             {
-                ans=ans+curr.weight;
+                ans += curr.weight;
                 
-                parent[srcParent]=destParent;
+            
+                        parent[srcParent]=destParent;  
             }
         }
         
