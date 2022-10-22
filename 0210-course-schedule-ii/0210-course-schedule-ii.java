@@ -26,7 +26,7 @@ class Solution {
         int[] ans = new int[numCourses];
         // for(int i=0;i<stack.size();i++)
         //     ans[i]=stack.pop();
-                int loop=0;
+        int loop=0;
         while(!stack.isEmpty())
         {
             ans[loop++]=stack.pop();
