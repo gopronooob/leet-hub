@@ -4,19 +4,20 @@ class Solution {
         Map<Integer,List<Integer>> graph=new HashMap<>();        
         boolean[] visited=new boolean[numCourses];
         
-        // for(int[] dependency : prerequisites)
-        // {
-        //     List<Integer> al = graph.getOrDefault(dependency[0],new ArrayList<Integer>());
-        //     al.add(dependency[1]);
-        // }
-
-        for (int i = 0; i < prerequisites.length; i++) {
-            int dest = prerequisites[i][0];
-            int src = prerequisites[i][1];
-            List<Integer> lst = graph.getOrDefault(src, new ArrayList<Integer>());
-            lst.add(dest);
-            graph.put(src, lst);
+        for(int[] dependency : prerequisites)
+        {
+            List<Integer> al = graph.getOrDefault(dependency[1],new ArrayList<Integer>());
+            al.add(dependency[0]);
+            graph.put(dependency[1],al);
         }
+
+//         for (int i = 0; i < prerequisites.length; i++) {
+//             int dest = prerequisites[i][0];
+//             int src = prerequisites[i][1];
+//             List<Integer> lst = graph.getOrDefault(src, new ArrayList<Integer>());
+//             lst.add(dest);
+//             graph.put(src, lst);
+//         }
         
         if(isCircular(graph,visited)) return new int[0];
         
