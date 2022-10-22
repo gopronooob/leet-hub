@@ -27,9 +27,9 @@ class Solution {
                         
                         String newWord=String.valueOf(currentWordChar);
                         //if(endWord.equalsIgnoreCase(newWord)) return ans+1;
-                        if(words.contains(newWord) && !visited.contains(newWord)) {
+                        if(words.contains(newWord) ) {
                             q.add(newWord);
-                            visited.add(newWord);
+                           words.remove(newWord);
                         }
                     }
                 }
