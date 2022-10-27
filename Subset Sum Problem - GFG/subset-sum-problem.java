@@ -53,7 +53,7 @@ class Solution{
         return helper(dp,arr,sum,N);
     }
     
-    
+    /*
     static boolean helper(Boolean[][] dp, int[] arr,int sum,int index)
     {
         if(sum==0) return true;
@@ -70,5 +70,27 @@ class Solution{
         }
         
         return dp[index][sum];
+    }*/
+
+    static boolean helper(Boolean[][] dp, int[] arr,int sum,int N) {
+        
+        for(int i=1;i<=N ; i++)
+        {
+            for(int j=1;j<=sum;j++)
+            {
+                if(j>=arr[i-1])
+                {
+                    dp[i][j] = dp[i-1][j-arr[i-1]] || dp[i-1][j];
+                }
+                else
+                {
+                    dp[i][j] = dp[i-1][j];
+                }
+            }
+        }
+        
+        return dp[N][sum];
     }
+
+    
 }
