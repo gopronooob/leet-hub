@@ -33,8 +33,7 @@ class Solution {
                     }
                 }
             }            
-        }        
-        //if(dp[coins.length][amount]==0) return 0 ; else
+        }         
              return dp[coins.length][amount];
     
     }
