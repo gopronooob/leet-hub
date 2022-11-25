@@ -43,8 +43,10 @@ class Solution
         
         if(dp[n]!=0)
             return dp[n];
-            
-        dp[n]  = (long)((countPair(n-1,dp)+(n-1)*countPair(n-2,dp))%mod);
+             long single = countPair(n-1,dp);
+        long paired = (n-1)*countPair(n-2,dp);
+
+        dp[n]  = (long)((single + paired)%mod);
         
         return dp[n];
     }
