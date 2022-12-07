@@ -24,6 +24,7 @@ class GFG {
 
 
 // User function Template for Java
+
 class Solution {
 
     int search(String pat, String txt) {
