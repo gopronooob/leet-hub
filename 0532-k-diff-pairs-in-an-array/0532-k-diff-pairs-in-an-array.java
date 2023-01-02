@@ -8,14 +8,14 @@ class Solution {
             set.put(nums[i],set.getOrDefault(nums[i],0)+1);
         }
         
-        for (Map.Entry<Integer, Integer> entry : set.entrySet()) {
+        for (int entry : set.keySet()) {
             if (k == 0) {
                 //count how many elements in the array that appear more than twice.
-                if (entry.getValue() >= 2) {
+                if (set.get(entry) >= 2) {
                     ans++;
                 } 
             } else {
-                if (set.containsKey(entry.getKey() + k)) {
+                if (set.containsKey(entry + k)) {
                     ans++;
                 }
             }
