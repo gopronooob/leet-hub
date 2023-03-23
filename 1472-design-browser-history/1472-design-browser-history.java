@@ -1,13 +1,12 @@
 class BrowserHistory {
  
     
-    int walker=0;
     Node current;
-    Node head;
+    
     public BrowserHistory(String homepage) {       
         current= new Node(homepage);
-        head=current; 
-        walker++;
+        
+        
         
     }
     
