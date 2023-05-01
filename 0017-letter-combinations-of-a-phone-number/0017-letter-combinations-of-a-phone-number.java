@@ -1,6 +1,6 @@
 class Solution {
     
-      Map<String, String> phone = new HashMap<String, String>() {{
+    Map<String, String> phone = new HashMap<String, String>() {{
     put("2", "abc");
     put("3", "def");
     put("4", "ghi");
@@ -13,30 +13,32 @@ class Solution {
     
     
     public List<String> letterCombinations(String digits) {
-        
         if(digits.length()==0)
-            {
-                List<String> cur=new ArrayList<>();
-               // cur.add("");
-                return cur;            
-            }
-        
-        List<String> ret= letterCombinations(digits.substring(1));
-        List<String> answer=new ArrayList<>();
-        String ch= String.valueOf(digits.charAt(0));
-        String charSet=phone.get(ch);
-        
-        for(int i=0;i<charSet.length();i++){ 
-        if(ret.size()==0)
         {
-            answer.add(String.valueOf(charSet.charAt(i)));
+            List<String> cur = new ArrayList<>();
+            return cur;
         }
-        for(String word:ret)
-        { 
-            answer.add(charSet.charAt(i)+word);
-            
-        }
-        }
-        return answer;
+        
+        String num = String.valueOf(digits.charAt(0));
+        String remaining = digits.substring(1);
+        
+        List<String> existingWords=letterCombinations(remaining);
+        List<String> currentWords = new ArrayList<>();
+        String charList = phone.get(num);
+       for(int i=0;i<charList.length();i++){
+            if(existingWords.size()==0)
+            {
+                currentWords.add(String.valueOf(charList.charAt(i)));
+            }
+            else
+            {
+                for(String word:existingWords)
+                {
+                    currentWords.add(charList.charAt(i)+word);
+                }
+            }
+         }
+        
+        return currentWords;
     }
 }
